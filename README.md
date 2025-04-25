@@ -1,12 +1,29 @@
-# React + Vite
+# uTask 3.0 - Sistema Kanban com Autenticação
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um sistema de gerenciamento de tarefas no estilo Kanban com autenticação de usuários, desenvolvido com React e React Router.
 
-Currently, two official plugins are available:
+## ✨ Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Autenticação Segura**
+  - Página de login com validação de campos
+  - Página de cadastro de novos usuários
+  - Dark Mode configurável
 
-## Expanding the ESLint configuration
+- **Quadro Kanban**
+  - Visualização de tarefas em colunas (To Do, Doing, Done)
+  - Arrastar e soltar tarefas entre colunas
+  - Adicionar/editar/remover tarefas
+  - Responsivo para diferentes telas
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Experiência do Usuário**
+  - Interface limpa e intuitiva
+  - Transições suaves entre estados
+  - Dark/Light mode com animações
+
+## 🛠 Tecnologias Utilizadas
+
+- **Frontend**
+  - React 18
+  - React Router DOM
+  - CSS Modules
+  - Vite
