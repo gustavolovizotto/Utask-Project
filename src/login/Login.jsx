@@ -1,12 +1,21 @@
 import styles from './login.module.css';
 import { LoginForm } from '../components/loginForm/LoginForm';
+import { useState } from 'react';
+import { FirstHeader } from '../components/header/FirstHeader';
 
 export function Login() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header} />
-      
+    <div className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}>
+
+      <FirstHeader isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+
       <div className={styles.content}>
         <div className={styles.leftSide}>
           <img 
@@ -22,7 +31,7 @@ export function Login() {
           alt="Divisor" 
         />
 
-        <LoginForm />
+        <LoginForm isDarkMode={isDarkMode}/>
         
       </div>
     </div>
