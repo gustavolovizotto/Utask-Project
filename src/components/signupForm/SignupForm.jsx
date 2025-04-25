@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './signupForm.module.css';
 import { useNavigate } from 'react-router-dom';
 
-export function SignUpForm() {
+export function SignUpForm({ isDarkMode }) {
     const [mostrarSenha, setMostrarSenha] = useState(true);
         
           const toggleSenha = () => {
@@ -14,7 +14,7 @@ export function SignUpForm() {
         navigate('/MainPage');
     };
 return (
-<form className={styles.form}>
+<form className={`${styles.form} ${isDarkMode ? styles.dark : ''}`}>
                  <span className={styles.logo}>uTask 3.0</span>
                  <img src='/src/assets/Divisor 2 login.svg' alt="Divisor" className={styles.divisor2}/>
                  <div className={styles.senha_wrapper}>

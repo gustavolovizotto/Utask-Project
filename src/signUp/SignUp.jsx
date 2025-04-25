@@ -1,14 +1,23 @@
 import styles from './signUp.module.css';
 import { SignUpForm } from '../components/signupForm/SignupForm';
+import { useState } from 'react';
+import { FirstHeader } from '../components/header/FirstHeader';
 
 export function SignUp() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  
+  
+    const toggleDarkMode = () => {
+      setIsDarkMode(!isDarkMode);
+    };
+
 
     return (
-    <div className={styles.container}>
-        <div className={styles.header} />
+    <div className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}>
+        <FirstHeader isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
           <div className={styles.content}>
 
-            <SignUpForm/>
+            <SignUpForm isDarkMode={isDarkMode}/>
 
               <img 
               className={styles.divisor1} 
