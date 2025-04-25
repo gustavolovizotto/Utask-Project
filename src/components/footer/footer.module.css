@@ -1,0 +1,6 @@
+.container{
+width: 8;
+height: 3.125rem;
+flex-shrink: 0;
+background: var(--blue3);
+}
