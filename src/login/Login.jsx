@@ -5,6 +5,7 @@ import { FirstHeader } from '../components/header/FirstHeader';
 
 export function Login() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 
   const toggleDarkMode = () => {
@@ -31,7 +32,9 @@ export function Login() {
           alt="Divisor" 
         />
 
-        <LoginForm isDarkMode={isDarkMode}/>
+        <LoginForm isDarkMode={isDarkMode}
+        setIsAuthenticated={setIsAuthenticated}
+        />
         
       </div>
     </div>

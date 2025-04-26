@@ -125,5 +125,27 @@
   
 }
 
+/* Estilo para botão desabilitado */
+.entrar_btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Estilos para o dark mode */
+.dark .input {
+  background: #333;
+  color: white;
+  border-color: #555;
+}
+
+.dark .label {
+  color: white;
+}
+
+.dark .esqueceu_senha,
+.dark .crie_conta {
+  color: #64a2ff;
+}
+
 
 
