@@ -1,0 +1,28 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Fulano da Silva",
+      "email": "fulano@exemplo.com",
+      "senha": "123456"
+    },
+    {
+      "id": "c689",
+      "nome": "Gustavo Lovizotto Tesin",
+      "email": "glovizotto@gmail.com",
+      "senha": "123456"
+    },
+    {
+      "id": "f730",
+      "nome": "Gustavo Lovizotto Tesin",
+      "email": "gustavolovizotto@gmail.com",
+      "senha": "123456"
+    },
+    {
+      "id": "31b9",
+      "nome": "renato",
+      "email": "gustavolo@gmail.com",
+      "senha": "123456"
+    }
+  ]
+}
