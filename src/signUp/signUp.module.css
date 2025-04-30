@@ -29,7 +29,8 @@
 
 .logo2 {
     max-width: 100%;
-    height: auto;
+    height: 80vh;
+    margin-top: 15vh;
     object-fit: contain;
 }
 
