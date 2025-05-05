@@ -26,3 +26,5 @@ export const loginUsuario = async (credenciais) => {
     });
     return response.data[0]; 
   };
+
+  export default api;

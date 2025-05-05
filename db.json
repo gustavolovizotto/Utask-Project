@@ -30,5 +30,37 @@
       "email": "joao@gmail.com",
       "senha": "123456"
     }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Pagar conta de luz",
+      "description": "",
+      "column": "todo"
+    },
+    {
+      "id": "2",
+      "title": "Fazer compras no mercado",
+      "description": "Comprar…",
+      "column": "todo"
+    },
+    {
+      "id": "3",
+      "title": "Fazer manicure",
+      "description": "",
+      "column": "todo"
+    },
+    {
+      "id": "dce9",
+      "title": "Podaodad",
+      "description": "adadada",
+      "column": "todo"
+    },
+    {
+      "id": "2e9d",
+      "title": "dadadad",
+      "description": "dadada",
+      "column": "inProgress"
+    }
   ]
 }
