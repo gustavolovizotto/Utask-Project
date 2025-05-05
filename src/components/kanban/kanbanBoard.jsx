@@ -27,7 +27,13 @@ export default function KanbanBoard() {
   const [columns, setColumns] = useState(initialColumns);
   const [tasksInfo, setTasksInfo] = useState({});
   const [formOpen, setFormOpen] = useState(false);
-  const sensors = useSensors(useSensor(PointerSensor));
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,   
+      },
+    })
+  );
 
   const handleAddClick = () => setFormOpen(true);
   const handleCancel = () => setFormOpen(false);
