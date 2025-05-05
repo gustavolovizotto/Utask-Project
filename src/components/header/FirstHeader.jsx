@@ -15,8 +15,8 @@ export function FirstHeader({ isDarkMode, toggleDarkMode }) {
         <img
           src={
             isDarkMode
-              ? '/src/assets/[Botão] dark mode (1).svg'
-              : '/src/assets/[Botão] Light mode.svg'
+              ? '/assets/[Botão] dark mode (1).svg'
+              : '/assets/[Botão] Light mode.svg'
           }
           alt="Toggle dark mode"
         />

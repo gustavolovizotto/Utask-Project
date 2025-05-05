@@ -143,8 +143,8 @@ export function SignUpForm({ isDarkMode }) {
                         <img
                             src={
                                 mostrarSenha
-                                    ? '/src/assets/visibility_FILL-icon.svg'
-                                    : '/src/assets/visibility_FILL0-icon.svg'
+                                    ? '/assets/visibility_FILL-icon.svg'
+                                    : '/assets/visibility_FILL0-icon.svg'
                             }
                             alt="Toggle senha"
                         />
@@ -170,8 +170,6 @@ export function SignUpForm({ isDarkMode }) {
                 
                 <button type="submit" className={styles.signup_btn}>Criar Cadastro</button>
             </form>
-            
-            {/* Container do Toastify */}
             <ToastContainer
                 position="top-center"
                 autoClose={3000}

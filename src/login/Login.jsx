@@ -21,14 +21,14 @@ export function Login() {
         <div className={styles.leftSide}>
           <img 
             className={styles.imagem1} 
-            src="/src/assets/Ilustração do login.svg" 
+            src="/assets/Ilustração do login.svg" 
             alt="Ilustração do login" 
           />
         </div>
 
         <img 
           className={styles.divisor1} 
-          src="/src/assets/Divisor 1 login.svg" 
+          src="/assets/Divisor 1 login.svg" 
           alt="Divisor" 
         />
 

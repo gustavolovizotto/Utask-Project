@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './loginForm.module.css';
-import { loginUsuario } from '../../services/api'; // Você precisará criar esta função no seu api.js
+import { loginUsuario } from '../../services/api'; 
 
 export function LoginForm({ isDarkMode, setIsAuthenticated }) {
     const [mostrarSenha, setMostrarSenha] = useState(true);
@@ -31,7 +31,8 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
         setLoading(true);
 
         try {
-            // Verifica se os campos estão preenchidos
+            
+            
             if (!credenciais.email || !credenciais.senha) {
                 throw new Error('Preencha todos os campos');
             }
@@ -42,7 +43,6 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
                 throw new Error('Credenciais inválidas');
             }
 
-            // Mostra mensagem de sucesso
             toast.success('Login realizado com sucesso!', {
                 position: "top-center",
                 autoClose: 2000,
@@ -50,7 +50,6 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
                 theme: isDarkMode ? 'dark' : 'light',
             });
 
-            // Atualiza estado de autenticação e redireciona
             setIsAuthenticated(true);
             setTimeout(() => {
                 navigate('/MainPage');
@@ -108,8 +107,8 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
                         <img
                             src={
                                 mostrarSenha
-                                    ? '/src/assets/visibility_FILL-icon.svg'
-                                    : '/src/assets/visibility_FILL0-icon.svg'
+                                    ? '/assets/visibility_FILL-icon.svg'
+                                    : '/assets/visibility_FILL0-icon.svg'
                             }
                             alt="Toggle senha"
                         />
@@ -130,7 +129,7 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
                 
                 <img 
                     className={styles.divisor2} 
-                    src="/src/assets/Divisor 2 login.svg" 
+                    src="/assets/Divisor 2 login.svg" 
                     alt="Divisor" 
                 />
                 

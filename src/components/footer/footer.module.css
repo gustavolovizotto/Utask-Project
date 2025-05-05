@@ -1,6 +1,34 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container{
-width: 8;
-height: 3.125rem;
-flex-shrink: 0;
-background: var(--blue3);
+    width: 100vw;
+    height: 3.125rem;
+    flex-shrink: 0;
+    background: var(--color-primary, #114FA7);
+    justify-content: center;
+    display: flex;
+    gap: 2vw;
+}
+
+footer p{
+    color: #FFF;
+font-family: Poppins;
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
+
+.unect{
+color: #FFF;
+font-family: Poppins;
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
 }
