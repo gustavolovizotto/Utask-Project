@@ -21,14 +21,14 @@ export function SignUp() {
 
               <img 
               className={styles.divisor1} 
-              src="/src/assets/Divisor 1 login.svg" 
+              src="/assets/Divisor 1 login.svg" 
               alt="Divisor" 
               />
 
 <div className={styles.rightSide}>
               <img 
                   className={styles.logo2} 
-                  src="/src/assets/Ilustração cadastro.svg" 
+                  src="/assets/Ilustração cadastro.svg" 
                   alt="Logo" 
               />
               </div>

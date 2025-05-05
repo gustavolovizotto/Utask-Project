@@ -1,0 +1,77 @@
+.card {
+    position: relative; /* para posicionar o menu absoluto */
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: grab;
+  }
+  
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .menu {
+    position: absolute;
+    top: 4vh;
+    right: 1vw;
+    background: transparent;
+    border: none;
+    z-index: 1;
+}
+
+.del{
+    cursor: pointer;
+}
+  
+
+
+.title{
+    color: #141414;
+font-family: Poppins;
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+  
+.toggle {
+    background: none;
+    border: none;
+    color: #007bff;
+    text-align: left;
+    padding: 0;
+    cursor: pointer;
+    color: #002D6C;
+font-family: Poppins;
+font-size: 0.75rem;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+  }
+  
+  .desc {
+color: #141414;
+font-family: Poppins;
+font-size: 0.75rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  }
+  
+  

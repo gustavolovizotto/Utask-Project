@@ -1,0 +1,21 @@
+.board {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+
+.wrapper {
+display: flex;
+justify-content: center; /* Centraliza horizontalmente */
+margin-top: 3vh;
+margin-bottom: 3vh;
+}
+
+.addButton {
+    background: transparent;
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+  }
