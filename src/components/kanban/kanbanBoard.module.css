@@ -3,12 +3,41 @@
     gap: 1rem;
     padding: 1rem;
 }
+.tableTitles {
+    display: flex;
+    margin-left: 18vw;
+    margin-bottom: -4vh;
+    gap: 1.5vw ;
+
+  }
+  
+
+  .tableTitles h2 {
+    color: #141414;
+font-family: Poppins;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  }
+
+  .todoTitle{
+    display: flex;
+    gap: 13vw;
+  }
+
+  .doneTitle{
+    
+    margin-left: 9vw;
+  }
+
+  .inProgressTitle{}
+
 
 
 .wrapper {
 display: flex;
 justify-content: center; /* Centraliza horizontalmente */
-margin-top: 3vh;
 margin-bottom: 3vh;
 }
 

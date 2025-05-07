@@ -150,10 +150,20 @@ export default function KanbanBoard() {
   
 
   return (
-    <div className={styles.wrapper}>
-      <ToastContainer /> 
+    <div className={styles.container}>
+      <div className={styles.tableTitles}>
+        <div className={styles.todoTitle}>
+      <h2>A fazer</h2>
       <button className={styles.addButton} onClick={handleAddClick}><img src='/assets/[Botão] Adicionar task.svg'></img></button>
       {formOpen && <TaskForm onSubmit={handleSubmit} onCancel={handleCancel} />}
+      </div>
+      <div className={styles.inProgressTitle}>
+      <h2>Em andamento</h2>
+      </div>
+      <div className={styles.doneTitle}><h2>Feito</h2></div>
+</div>
+    <div className={styles.wrapper}>
+      <ToastContainer />
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
         <div className={styles.board}>
           <SortableContext items={columns.todo} strategy={verticalListSortingStrategy}>
@@ -169,6 +179,7 @@ export default function KanbanBoard() {
           </SortableContext>
         </div>
       </DndContext>
+    </div>
     </div>
   );
 }
