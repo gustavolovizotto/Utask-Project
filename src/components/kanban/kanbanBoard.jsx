@@ -7,6 +7,9 @@ import {
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   SortableContext,
   arrayMove,
@@ -97,24 +100,35 @@ export default function KanbanBoard() {
   };
 
   const handleDelete = (taskId) => {
-    api.delete(`/tasks/${taskId}`)
-      .then(() => {
-        // Remove do estado columns
-        setColumns(prev => {
-          const updated = {...prev};
-          Object.keys(updated).forEach(col => {
-            updated[col] = updated[col].filter(id => id !== taskId);
+    if (window.confirm('Tem certeza que deseja excluir esta tarefa?')) {
+      api.delete(`/tasks/${taskId}`)
+        .then(() => {
+          setColumns(prev => {
+            const updated = {...prev};
+            Object.keys(updated).forEach(col => {
+              updated[col] = updated[col].filter(id => id !== taskId);
+            });
+            return updated;
           });
-          return updated;
+          
+          setTasksInfo(prev => {
+            const {[taskId]: deleted, ...rest} = prev;
+            return rest;
+          });
+  
+          toast.success('Tarefa excluída com sucesso!', {
+            position: "top-right",
+            autoClose: 2000,
+          });
+        })
+        .catch(err => {
+          console.error('Erro ao deletar:', err);
+          toast.error('Erro ao excluir a tarefa!', {
+            position: "top-right",
+            autoClose: 2000,
+          });
         });
-        
-        // Remove do tasksInfo
-        setTasksInfo(prev => {
-          const {[taskId]: deleted, ...rest} = prev;
-          return rest;
-        });
-      })
-      .catch(err => console.error('Erro ao deletar:', err));
+    }
   };
 
 
@@ -137,6 +151,7 @@ export default function KanbanBoard() {
 
   return (
     <div className={styles.wrapper}>
+      <ToastContainer /> 
       <button className={styles.addButton} onClick={handleAddClick}><img src='/assets/[Botão] Adicionar task.svg'></img></button>
       {formOpen && <TaskForm onSubmit={handleSubmit} onCancel={handleCancel} />}
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
