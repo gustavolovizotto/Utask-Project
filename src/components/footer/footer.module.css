@@ -6,12 +6,12 @@ body{
 
 .container{
     width: 100vw;
-    height: 3.125rem;
+    height: 3.125vw;
+    display: flex;
     flex-shrink: 0;
     background: var(--color-primary, #114FA7);
-    justify-content: center;
     display: flex;
-    gap: 2vw;
+    gap: 30vw;
 }
 
 footer p{
@@ -21,14 +21,16 @@ font-size: 0.875rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+margin-left: 12vw;
 
 }
 
-.unect{
+footer a{
 color: #FFF;
 font-family: Poppins;
 font-size: 0.875rem;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+text-decoration: none;
 }
