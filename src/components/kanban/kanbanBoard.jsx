@@ -96,6 +96,27 @@ export default function KanbanBoard() {
        .catch(console.error);
   };
 
+  const handleDelete = (taskId) => {
+    api.delete(`/tasks/${taskId}`)
+      .then(() => {
+        // Remove do estado columns
+        setColumns(prev => {
+          const updated = {...prev};
+          Object.keys(updated).forEach(col => {
+            updated[col] = updated[col].filter(id => id !== taskId);
+          });
+          return updated;
+        });
+        
+        // Remove do tasksInfo
+        setTasksInfo(prev => {
+          const {[taskId]: deleted, ...rest} = prev;
+          return rest;
+        });
+      })
+      .catch(err => console.error('Erro ao deletar:', err));
+  };
+
 
   useEffect(() => {
     api.get('/tasks')
@@ -121,14 +142,14 @@ export default function KanbanBoard() {
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
         <div className={styles.board}>
           <SortableContext items={columns.todo} strategy={verticalListSortingStrategy}>
-            <KanbanColumn id="todo" title="A fazer" items={columns.todo} tasksInfo={tasksInfo} />
+            <KanbanColumn id="todo" title="A fazer" items={columns.todo} tasksInfo={tasksInfo} onDelete={handleDelete}/>
           </SortableContext>
           <SortableContext items={columns.inProgress} strategy={verticalListSortingStrategy}>
-            <KanbanColumn id="inProgress" title="Em andamento" items={columns.inProgress} tasksInfo={tasksInfo} />
+            <KanbanColumn id="inProgress" title="Em andamento" items={columns.inProgress} tasksInfo={tasksInfo} onDelete={handleDelete}/>
           
           </SortableContext>
           <SortableContext items={columns.done} strategy={verticalListSortingStrategy}>
-            <KanbanColumn id="done" title="Feito" items={columns.done} tasksInfo={tasksInfo} />
+            <KanbanColumn id="done" title="Feito" items={columns.done} tasksInfo={tasksInfo} onDelete={handleDelete}/>
           
           </SortableContext>
         </div>
