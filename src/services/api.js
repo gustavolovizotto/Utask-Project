@@ -1,30 +1,90 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3001'
+  baseURL: 'http://localhost:3001',
 });
 
-export const cadastrarUsuario = async (usuario) => {
-    
-  const { data } = await api.get('/usuarios', {
-    params: { email: usuario.email }
-  });
-
-  if (data.length > 0) {
-    throw new Error('Email já cadastrado');
+// Função genérica para tratamento de erros
+const handleError = (error) => {
+  if (error.response) {
+    // Erros 4xx/5xx
+    throw new Error(`Erro no servidor: ${error.response.data}`);
+  } else if (error.request) {
+    // Sem resposta do servidor
+    throw new Error('Sem resposta do servidor. Verifique sua conexão.');
+  } else {
+    // Erros de configuração
+    throw new Error(`Erro na requisição: ${error.message}`);
   }
+};
 
-  return api.post('/usuarios', usuario);
+export const cadastrarUsuario = async (usuario) => {
+  try {
+    // Verifica se o email já existe
+    const { data } = await api.get('/usuarios', {
+      params: { email: usuario.email },
+    });
+
+    if (data.length > 0) {
+      throw new Error('Email já cadastrado');
+    }
+
+    // Cria novo usuário com ID sequencial
+    const newUser = {
+      ...usuario,
+      id: Date.now().toString(), // Gera um ID único
+    };
+
+    const response = await api.post('/usuarios', newUser);
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
 };
 
 export const loginUsuario = async (credenciais) => {
-    const response = await api.get('/usuarios', {
+  try {
+    const { data } = await api.get('/usuarios', {
       params: {
         email: credenciais.email,
-        senha: credenciais.senha
-      }
+        senha: credenciais.senha,
+      },
     });
-    return response.data[0]; 
-  };
 
-  export default api;
+    if (data.length === 0) {
+      throw new Error('Credenciais inválidas');
+    }
+
+    return data[0];
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+// Funções para tasks
+export const criarTask = async (task) => {
+  try {
+    const newTask = {
+      ...task,
+      id: Date.now().toString(),
+      createdAt: new Date().toISOString(),
+    };
+    const response = await api.post('/tasks', newTask);
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export const getTasksByUser = async (userId) => {
+  try {
+    const { data } = await api.get('/tasks', {
+      params: { usuarioId: userId },
+    });
+    return data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export default api;

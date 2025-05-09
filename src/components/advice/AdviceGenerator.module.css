@@ -1,89 +1,61 @@
-/* AdviceGenerator.module.css */
-
-.container{
-    margin-left: 10vw;
-    margin-top: 5vh;
+.container {
+  margin-left: 18%;
+  margin-top: 5vh;
 }
 .card {
-    background: #2d2d2d;
-    display: flex;
-    border-radius: 1.25rem;
-    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.04);
-    width: 38.75rem;
-    height: 7.4375rem;
-    text-align: center;
-    background-color: #FFFFFF;
-    border: none;
+  background: #2d2d2d;
+  display: flex;
+  border-radius: 1.25rem;
+  box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.04);
+  width: 32.25vw;
+  height: 12.4375vh;
+
+  justify-content: flex-start;
+  background-color: #ffffff;
+  border: none;
 }
 
-.dark .card{
-    background: #3D3D3D;
-    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.04);
+.card.dark {
+  background: #3d3d3d;
 }
-  
+
 .title {
-white-space: nowrap;
-color: #141414;
-text-align: center;
-font-family: Poppins;
-font-size: 0.75rem;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-margin-left: 1rem;
-margin-top: 1rem;
+  white-space: nowrap;
+  color: #141414;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 0.75vw;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 1vw;
+  margin-top: 2vh;
 }
-  
+
+.title.dark {
+  color: #fafafa;
+}
+
 .translatedAdvice {
-    color: #141414;
-font-family: Poppins;
-font-size: 0.875rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin-left: -5rem;
-margin-top: 2.30rem;
+  color: #141414;
+  font-family: Poppins;
+  font-size: 0.875vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: -4vw;
+  margin-top: 4.3vh;
+  width: 27.25vw;
 }
 
-.image{
-    margin-left: 1rem;
-    margin-top: 1rem;
-    width: 2.75rem;
-    height: 2.75rem;
-    flex-shrink: 0;
+.translatedAdvice.dark {
+  color: #fafafa;
 }
 
-  .errorContainer {
-    background: #ffe6e6;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid #ff4d4d;
-  }
-  
-  .error {
-    color: #ff4d4d;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  
-  
-  @keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
-  }
-  
-  @media (max-width: 768px) {
-    .card {
-      padding: 2rem;
-    }
-    
-    .title {
-      font-size: 1.8rem;
-    }
-    
-    .translatedAdvice {
-      font-size: 1.3rem;
-      padding: 1.5rem;
-    }
-  }
+.image {
+  margin-left: 1vw;
+  margin-top: 1.5vh;
+  width: 2.75vw;
+  height: 5.75vh;
+  flex-shrink: 0;
+}

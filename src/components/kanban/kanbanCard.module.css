@@ -1,77 +1,186 @@
 .card {
-    position: relative; /* para posicionar o menu absoluto */
-    background: #fff;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    cursor: grab;
-  }
-  
-  .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .menuButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .menu {
-    position: absolute;
-    top: 4vh;
-    right: 1vw;
-    background: transparent;
-    border: none;
-    z-index: 1;
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: grab;
+  height: 7.725vh;
+  width: 12.8125vw;
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  width: 12.8125vw;
+  min-height: 4.625rem;
 }
 
-.del{
-    cursor: pointer;
+.card.expanded {
+  min-height: auto;
+  height: auto;
 }
-  
 
-
-.title{
-    color: #141414;
-font-family: Poppins;
-font-size: 0.875rem;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-  
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 2;
+}
+
+.menu {
+  position: absolute;
+  top: 4vh;
+  right: 1vw;
+  background: transparent;
+  border: none;
+  z-index: 1;
+}
+
+.del {
+  cursor: pointer;
+}
+
+.delbtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25vw;
+  cursor: pointer;
+
+  width: 5.2vw;
+  height: 4.9375vh;
+  flex-shrink: 0;
+
+  margin-right: 1.5vw;
+  margin-top: -1.75vh;
+
+  border-radius: 0.25vw;
+  border: none;
+  background: none;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.delbtn svg {
+  fill: #df0000;
+}
+
+.delbtn p {
+  color: #df0000;
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.menu.dark .delbtn {
+  background: #535353;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.menu.dark .delbtn p {
+  color: #ffafaf;
+}
+
+.menu.dark .delbtn svg {
+  fill: #ffafaf;
+}
+
+.trespontos {
+  color: #000000;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.trespontos.dark {
+  color: #fafafa;
+}
+
+.trespontos:hover {
+  opacity: 0.7;
+}
+
+.title {
+  color: #141414;
+  font-family: Poppins;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
 .toggle {
-    background: none;
-    border: none;
-    color: #007bff;
-    text-align: left;
-    padding: 0;
-    cursor: pointer;
-    color: #002D6C;
-font-family: Poppins;
-font-size: 0.75rem;
-font-style: normal;
-font-weight: 300;
-line-height: normal;
-  }
-  
-  .desc {
-color: #141414;
-font-family: Poppins;
-font-size: 0.75rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-  }
-  
-  
+  background: none;
+  border: none;
+  color: #007bff;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  color: #002d6c;
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.desc {
+  color: #141414;
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-height: 0;
+  white-space: pre-line;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: 100%;
+}
+
+.desc.open {
+  max-height: 10vh;
+}
+
+.actions {
+  cursor: pointer;
+  display: flex;
+  margin-left: 9vw;
+  gap: 0.5vw;
+}
+
+.card.dark {
+  background: #3d3d3d;
+  color: #fafafa;
+}
+
+.title.dark {
+  color: #fafafa;
+}
+
+.toggle.dark {
+  color: #5c9dff;
+}
+
+.menu.dark {
+  background-color: #444;
+  color: white;
+}
+
+.desc.dark {
+  color: #fafafa;
+}

@@ -1,49 +1,12 @@
-
-
 .container {
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background: #FAFAFA;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  overflow-x: hidden;
 }
 
 .container.dark {
-    background: #222;
+  background: #222;
 }
-
-.dark
-
-
-.rightSide {
-    flex: 1 1 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    box-sizing: border-box;
-}
-
-.logo2 {
-    max-width: 100%;
-    height: 80vh;
-    margin-top: 15vh;
-    object-fit: contain;
-}
-
-.divisor1 {
-    width: 0.35vw;
-    height: 80%;
-    align-self: center;
-    flex-shrink: 0;
-}
-
-.logo {
-    color: #226ED8;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 2.625rem;
-    font-weight: 700;
-    margin-bottom: -1.55rem;
-}
-

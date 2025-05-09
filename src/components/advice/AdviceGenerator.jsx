@@ -2,26 +2,25 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './AdviceGenerator.module.css';
 
-
-const AdviceGenerator = () => {
+const AdviceGenerator = ({ isDarkMode }) => {
   const [advice, setAdvice] = useState('');
   const [translatedAdvice, setTranslatedAdvice] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
   const fetchAndTranslateAdvice = async () => {
     try {
       setLoading(true);
       setError(null);
-      
 
-      const adviceResponse = await axios.get('https://api.adviceslip.com/advice');
+      const adviceResponse = await axios.get(
+        'https://api.adviceslip.com/advice',
+      );
       const newAdvice = adviceResponse.data.slip.advice;
       setAdvice(newAdvice);
 
       const translateResponse = await axios.get(
-        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(newAdvice)}&langpair=en|pt`
+        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(newAdvice)}&langpair=en|pt`,
       );
 
       if (translateResponse.data.responseStatus === 200) {
@@ -29,7 +28,6 @@ const AdviceGenerator = () => {
       } else {
         throw new Error('Erro na tradução');
       }
-      
     } catch (err) {
       setError(err.message);
       console.error(err);
@@ -43,22 +41,42 @@ const AdviceGenerator = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
-        <img src='/assets/Ícone lampada mensagem.svg' alt='Imagem de uma lâmpada' className={styles.image} />
-        <h1 className={styles.title}>Frase do Dia</h1>
-        
+    <div className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}>
+      <div className={`${styles.card} ${isDarkMode ? styles.dark : ''}`}>
+        <img
+          src={
+            isDarkMode
+              ? '/assets/Ícone lampada dark.svg'
+              : '/assets/Ícone lampada mensagem.svg'
+          }
+          alt="Imagem de uma lâmpada"
+          className={`${styles.image} ${isDarkMode ? styles.dark : ''}`}
+        />
+        <h1 className={`${styles.title} ${isDarkMode ? styles.dark : ''}`}>
+          Frase do Dia
+        </h1>
+
         {loading ? (
-          <p className={styles.loading}>Carregando sabedoria...</p>
+          <p
+            className={`${styles.loading} ${isDarkMode ? styles.dark : ''}`}
+          ></p>
         ) : error ? (
-          <div className={styles.errorContainer}>
-            <p className={styles.error}>Erro: {error}</p>
+          <div
+            className={`${styles.errorContainer} ${isDarkMode ? styles.dark : ''}`}
+          >
+            <p className={`${styles.error} ${isDarkMode ? styles.dark : ''}`}>
+              Erro: {error}
+            </p>
           </div>
         ) : (
-          <p className={styles.translatedAdvice}>"{translatedAdvice}"</p>
+          <p
+            className={`${styles.translatedAdvice} ${isDarkMode ? styles.dark : ''}`}
+          >
+            "{translatedAdvice}"
+          </p>
         )}
       </div>
-      </div>
+    </div>
   );
 };
 

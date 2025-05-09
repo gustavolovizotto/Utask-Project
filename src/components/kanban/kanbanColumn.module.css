@@ -1,18 +1,25 @@
 .column {
-    background: #f1f1f1;
-    border-radius: 12px;
-    padding: 1rem;
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
-    transition: background 0.2s;
-  }
-  .over {
-    background: #e0f7fa; /* realce ao arrastar sobre */
-  }
-  .header {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-  
+  background: #f1f1f1;
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 2vh;
+  align-items: center;
+  width: 17vw;
+  max-height: 57vh;
+  transition: background 0.2s;
+  overflow-y: auto;
+}
+.over {
+  background: #e0f7fa;
+}
+.header {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.column.dark {
+  background: #333;
+}

@@ -1,22 +1,27 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Header } from './components/header/Header'
-import { Footer } from './components/footer/Footer'
-import { Login } from './login/Login'
-import { SignUp } from './signup/SignUp'
-import { LoginForm } from './components/loginForm/LoginForm'
+import { BrowserRouter, Routes, Navigate, Route } from 'react-router-dom';
+import { Login } from './login/Login';
 import { MainPage } from './mainPage/MainPage';
+import { AuthProvider } from './auth/AuthContext';
+import { ProtectedRoute } from './auth/ProtectedRoute';
 
 function App() {
-
   return (
-        <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/mainPage" element={<MainPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/mainpage"
+            element={
+              <ProtectedRoute>
+                <MainPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
-        </BrowserRouter>
-  )
+      </AuthProvider>
+    </BrowserRouter>
+  );
 }
-export default App
+export default App;

@@ -1,50 +1,62 @@
+.container {
+  display: block;
+  margin-top: 2vh;
+}
+
 .board {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
 }
 .tableTitles {
-    display: flex;
-    margin-left: 18vw;
-    margin-bottom: -4vh;
-    gap: 1.5vw ;
+  display: flex;
+  margin-left: 25vw;
+  margin-bottom: -3vh;
+  gap: 1.5vw;
+}
 
-  }
-  
+.tableTitles h2 {
+  color: #141414;
+  font-family: Poppins;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
-  .tableTitles h2 {
-    color: #141414;
-font-family: Poppins;
-font-size: 1.25rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-  }
+.todoTitle {
+  display: flex;
+  gap: 10.5vw;
+}
 
-  .todoTitle{
-    display: flex;
-    gap: 13vw;
-  }
+.doneTitle {
+  margin-left: 7vw;
+}
 
-  .doneTitle{
-    
-    margin-left: 9vw;
-  }
-
-  .inProgressTitle{}
-
-
+.inProgressTitle {
+}
 
 .wrapper {
-display: flex;
-justify-content: center; /* Centraliza horizontalmente */
-margin-bottom: 3vh;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
 }
 
 .addButton {
-    background: transparent;
-    color: #fff;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-  }
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.container.dark {
+  background: #222;
+  color: #ffffff;
+}
+
+.dark .inProgressTitle h2,
+.dark .doneTitle h2,
+.dark .todoTitle h2 {
+  color: #fafafa;
+}

@@ -1,23 +1,26 @@
-
 import styles from './header.module.css';
 
 export function Header({ isDarkMode, toggleDarkMode }) {
   return (
-    <div className={styles.header} style={{ '--header-bg': isDarkMode ? '#333' : '#226ED8' }}>
-        
-        
-        <img
-          src={
-            isDarkMode
-              ? '/assets/[Imagem] Logo azul unect (1).svg'
-              : '/assets/[Imagem] Logo branca.svg'
-          }
-          alt="Logo Unect"
-        />
+    <div
+      className={styles.header}
+      style={{ '--header-bg': isDarkMode ? '#333' : '#226ED8' }}
+    >
+      <img
+        src={
+          isDarkMode
+            ? '/assets/[Imagem] Logo azul unect (1).svg'
+            : '/assets/[Imagem] Logo branca.svg'
+        }
+        alt="Logo Unect"
+      />
 
-        <h1 className={styles.title} style={{ '--header-text-color': isDarkMode ? '#226ED8' : '#FAFAFA' }}>uTask 3.0</h1>
-    
-
+      <h1
+        className={styles.title}
+        style={{ '--header-text-color': isDarkMode ? '#226ED8' : '#FAFAFA' }}
+      >
+        uTask 3.0
+      </h1>
 
       <button
         type="button"

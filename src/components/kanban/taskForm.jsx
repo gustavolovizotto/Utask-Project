@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './TaskForm.module.css';
 
-export default function TaskForm({ onSubmit, onCancel }) {
+export default function TaskForm({ onSubmit, onCancel, userId }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [column, setColumn] = useState('todo');
@@ -9,7 +9,12 @@ export default function TaskForm({ onSubmit, onCancel }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim()) return;
-    onSubmit({ title: title.trim(), description: description.trim(), column });
+    onSubmit({
+      title: title.trim(),
+      description: description.trim(),
+      column,
+      userId,
+    });
     setTitle('');
     setDescription('');
   };
@@ -17,11 +22,20 @@ export default function TaskForm({ onSubmit, onCancel }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-      <img src='/public/assets/[Botão] Fechar.svg' alt='Fechar' onClick={onCancel} className={styles.closeButton} />
+        <img
+          src="/assets/[Botão] Fechar.svg"
+          alt="Fechar"
+          onClick={onCancel}
+          className={styles.closeButton}
+        />
         <form className={styles.form} onSubmit={handleSubmit}>
-        <img src='/public/assets/Título form kanvan.svg' alt='Título' className={styles.title} />
+          <img
+            src="/assets/Título form kanvan.svg"
+            alt="Título"
+            className={styles.title}
+          />
           <label>
-          Título *
+            Título *
             <input
               type="text"
               value={title}

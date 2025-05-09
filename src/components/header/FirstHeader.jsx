@@ -3,10 +3,10 @@ import styles from './firstHeader.module.css';
 
 export function FirstHeader({ isDarkMode, toggleDarkMode }) {
   return (
-    <div 
-  className={styles.header}
-  style={{ '--header-bg': isDarkMode ? '#333' : '#226ED8' }}
->
+    <div
+      className={styles.header}
+      style={{ '--header-bg': isDarkMode ? '#333' : '#226ED8' }}
+    >
       <button
         type="button"
         className={styles.darkmode_toggle}
