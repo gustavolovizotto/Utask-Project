@@ -3,6 +3,7 @@ import { Login } from './login/Login';
 import { MainPage } from './mainPage/MainPage';
 import { AuthProvider } from './auth/AuthContext';
 import { ProtectedRoute } from './auth/ProtectedRoute';
+import { SignUp } from './signUp/SignUp';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route
             path="/mainpage"
             element={
