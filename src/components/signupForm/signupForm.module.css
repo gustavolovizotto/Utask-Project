@@ -65,6 +65,7 @@ form h1 {
   font-family: Poppins;
   font-size: 1rem;
   font-weight: 400;
+  align-self: flex-start;
 }
 
 .dark .label {
@@ -102,6 +103,8 @@ form h1 {
   position: relative;
   width: 50%;
   flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 .senha_toggle {
@@ -115,7 +118,6 @@ form h1 {
   padding: 0;
 }
 
-/* Estilo para inputs com erro */
 .inputError {
   border: 2px solid #ff6b6b !important;
   background-color: #fff5f5 !important;
@@ -126,7 +128,6 @@ form h1 {
   background-color: #2a0a0a !important;
 }
 
-/* Mensagem de erro específica para senhas */
 .errorMessage {
   color: #ff6b6b;
   font-size: 0.8rem;
@@ -144,7 +145,6 @@ form h1 {
   font-weight: 600;
 }
 
-/* Estilo para mensagem de erro geral */
 .erro {
   font-family: Poppins;
   font-size: 1rem;
@@ -163,4 +163,77 @@ form h1 {
   font-weight: 600;
   background-color: #2a0a0a;
   border-color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .signup_btn {
+    width: 100%;
+  }
+
+  .logo {
+    color: #226ed8;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 10.625vw;
+    font-weight: 700;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .divisor2 {
+    width: 80%;
+    margin: 1vh auto;
+  }
+
+  .form {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 2rem;
+    justify-content: center;
+    max-width: 50%;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  form h1 {
+    color: #00122a;
+    font-family: Poppins;
+    font-size: 4.5vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    align-self: flex-start;
+    margin-bottom: 2vh;
+    white-space: nowrap;
+  }
+  .label {
+    color: #00122b;
+    font-family: Poppins;
+    font-size: 1rem;
+    font-size: 3vw;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .input {
+    border-radius: 0.5rem;
+    border: 1px solid #002d6c;
+    background: #eef5ff;
+    width: 100%;
+    height: 5vh;
+    padding: 0.5rem;
+    font-family: Poppins;
+    font-size: 0.875rem;
+    display: flex;
+    white-space: nowrap;
+  }
+
+  .senha_wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
 }
