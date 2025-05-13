@@ -13,3 +13,12 @@
   display: flex;
   margin-left: 90%;
 }
+
+@media (max-width: 768px) {
+  .header button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    margin-left: 80%;
+  }
+}
