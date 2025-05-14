@@ -1,5 +1,5 @@
 .container {
-  display: block;
+  display: flex;
   margin-top: 2vh;
 }
 
@@ -7,12 +7,25 @@
   display: flex;
   gap: 1rem;
   padding: 1rem;
+  width: 100%;
+  justify-content: center;
 }
+
 .tableTitles {
   display: flex;
-  margin-left: 25vw;
-  margin-bottom: -3vh;
+  width: 100%;
+  justify-content: center;
   gap: 1.5vw;
+  margin-left: 0;
+  margin-bottom: -3vh;
+}
+
+.tableTitles,
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  gap: 2vw;
 }
 
 .tableTitles h2 {
@@ -26,20 +39,23 @@
 
 .todoTitle {
   display: flex;
-  gap: 10.5vw;
 }
 
+.todoTitle,
+.inProgressTitle,
 .doneTitle {
-  margin-left: 7vw;
-}
-
-.inProgressTitle {
+  display: flex;
+  gap: 8vw;
+  justify-content: center;
 }
 
 .wrapper {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 3vh;
+  width: 55%;
+  margin: 0 auto 3vh auto;
 }
 
 .addButton {

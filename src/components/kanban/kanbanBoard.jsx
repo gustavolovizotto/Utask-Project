@@ -86,18 +86,16 @@ export default function KanbanBoard({ isDarkMode, userId }) {
   };
 
   const handleMoveNext = (taskId) => {
-    // Descobre coluna atual
     const fromCol = Object.keys(columns).find((col) =>
       columns[col].includes(taskId),
     );
-    // Define ordem fixa de colunas
+
     const order = ['todo', 'inProgress', 'done'];
     const idx = order.indexOf(fromCol);
-    if (idx === -1 || idx === order.length - 1) return; // se já estiver em 'done', não faz nada
+    if (idx === -1 || idx === order.length - 1) return;
 
     const toCol = order[idx + 1];
 
-    // Atualiza local
     setColumns((prev) => {
       const updated = { ...prev };
       updated[fromCol] = prev[fromCol].filter((id) => id !== taskId);
@@ -105,34 +103,28 @@ export default function KanbanBoard({ isDarkMode, userId }) {
       return updated;
     });
 
-    // Atualiza backend
     api.patch(`/tasks/${taskId}`, { column: toCol }).catch(console.error);
   };
 
   const handleMovePrevious = (taskId) => {
-    // Encontra a coluna atual da task
     const fromCol = Object.keys(columns).find((col) =>
       columns[col].includes(taskId),
     );
 
-    // Ordem das colunas (agora importante para a direção)
     const order = ['todo', 'inProgress', 'done'];
     const idx = order.indexOf(fromCol);
 
-    // Não faz nada se já estiver na primeira coluna
     if (idx <= 0) return;
 
-    const toCol = order[idx - 1]; // Pega a coluna anterior
+    const toCol = order[idx - 1];
 
-    // Atualiza o estado local
     setColumns((prev) => {
       const updated = { ...prev };
       updated[fromCol] = prev[fromCol].filter((id) => id !== taskId);
-      updated[toCol] = [...prev[toCol], taskId]; // Adiciona no início se quiser
+      updated[toCol] = [...prev[toCol], taskId];
       return updated;
     });
 
-    // Atualiza o backend
     api.patch(`/tasks/${taskId}`, { column: toCol }).catch(console.error);
   };
 
@@ -173,7 +165,7 @@ export default function KanbanBoard({ isDarkMode, userId }) {
     api
       .get('/tasks', {
         params: {
-          usuarioId: userId, // Filtro normal
+          usuarioId: userId,
         },
       })
       .then(({ data }) => {
@@ -187,35 +179,35 @@ export default function KanbanBoard({ isDarkMode, userId }) {
         setTasksInfo(info);
       })
       .catch((err) => console.error('Erro ao carregar tasks:', err));
-  }, [userId]); // Adicione userId como dependência
+  }, [userId]);
 
   return (
     <div className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}>
-      <div className={styles.tableTitles}>
-        <div className={styles.todoTitle}>
-          <h2>A fazer</h2>
-          <button className={styles.addButton} onClick={handleAddClick}>
-            <img
-              src="/assets/[Botão] Adicionar task.svg"
-              alt="Adicionar tarefa"
-            />
-          </button>
-          {formOpen && (
-            <TaskForm
-              onSubmit={handleSubmit}
-              onCancel={handleCancel}
-              userId={userId}
-            />
-          )}
-        </div>
-        <div className={styles.inProgressTitle}>
-          <h2>Em andamento</h2>
-        </div>
-        <div className={styles.doneTitle}>
-          <h2>Feito</h2>
-        </div>
-      </div>
       <div className={styles.wrapper}>
+        <div className={styles.tableTitles}>
+          <div className={styles.todoTitle}>
+            <h2>A fazer</h2>
+            <button className={styles.addButton} onClick={handleAddClick}>
+              <img
+                src="/assets/[Botão] Adicionar task.svg"
+                alt="Adicionar tarefa"
+              />
+            </button>
+            {formOpen && (
+              <TaskForm
+                onSubmit={handleSubmit}
+                onCancel={handleCancel}
+                userId={userId}
+              />
+            )}
+          </div>
+          <div className={styles.inProgressTitle}>
+            <h2>Em andamento</h2>
+          </div>
+          <div className={styles.doneTitle}>
+            <h2>Feito</h2>
+          </div>
+        </div>
         <ToastContainer />
         <DndContext
           sensors={sensors}
