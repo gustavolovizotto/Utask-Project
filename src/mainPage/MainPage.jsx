@@ -22,7 +22,7 @@ export function MainPage() {
   return (
     <div className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}>
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <div className="content">
+      <div className={styles.content}>
         <AdviceGenerator isDarkMode={isDarkMode} />
         <KanbanBoard userId={user.id} isDarkMode={isDarkMode} />
       </div>

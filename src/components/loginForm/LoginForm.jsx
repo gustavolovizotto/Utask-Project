@@ -63,8 +63,6 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
     } finally {
       setLoading(false);
     }
-
-    navigate('/MainPage');
   };
 
   return (
