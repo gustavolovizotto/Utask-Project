@@ -184,3 +184,32 @@
 .desc.dark {
   color: #fafafa;
 }
+
+.todoActions {
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: 1vw;
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 70%;
+    min-width: 0;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .actions {
+    cursor: pointer;
+    display: flex;
+    margin-left: 75%;
+    gap: 2vw;
+  }
+
+  .todoActions {
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: -0.6vw;
+  }
+}

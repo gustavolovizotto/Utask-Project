@@ -26,6 +26,18 @@ const initialColumns = {
   done: [],
 };
 
+function useIsMobile(breakpoint = 900) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoint);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= breakpoint);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 export default function KanbanBoard({ isDarkMode, userId }) {
   const [columns, setColumns] = useState(initialColumns);
   const [tasksInfo, setTasksInfo] = useState({});
@@ -37,6 +49,8 @@ export default function KanbanBoard({ isDarkMode, userId }) {
       },
     }),
   );
+
+  const isMobile = useIsMobile(900);
 
   const handleAddClick = () => setFormOpen(true);
   const handleCancel = () => setFormOpen(false);
@@ -103,6 +117,14 @@ export default function KanbanBoard({ isDarkMode, userId }) {
       return updated;
     });
 
+    setTasksInfo((prev) => ({
+      ...prev,
+      [taskId]: {
+        ...prev[taskId],
+        column: toCol,
+      },
+    }));
+
     api.patch(`/tasks/${taskId}`, { column: toCol }).catch(console.error);
   };
 
@@ -124,6 +146,14 @@ export default function KanbanBoard({ isDarkMode, userId }) {
       updated[toCol] = [...prev[toCol], taskId];
       return updated;
     });
+
+    setTasksInfo((prev) => ({
+      ...prev,
+      [taskId]: {
+        ...prev[taskId],
+        column: toCol,
+      },
+    }));
 
     api.patch(`/tasks/${taskId}`, { column: toCol }).catch(console.error);
   };
@@ -159,6 +189,43 @@ export default function KanbanBoard({ isDarkMode, userId }) {
           });
         });
     }
+  };
+
+  const handleMoveToFirst = (taskId) => {
+    const fromCol = Object.keys(columns).find((col) =>
+      columns[col].includes(taskId),
+    );
+    if (!fromCol || fromCol === 'todo') return;
+
+    setColumns((prev) => {
+      const updated = { ...prev };
+      updated[fromCol] = prev[fromCol].filter((id) => id !== taskId);
+      updated['todo'] = [...prev['todo'], taskId];
+      return updated;
+    });
+
+    setTasksInfo((prev) => ({
+      ...prev,
+      [taskId]: {
+        ...prev[taskId],
+        column: 'todo',
+      },
+    }));
+
+    api.patch(`/tasks/${taskId}`, { column: 'todo' }).catch(console.error);
+  };
+
+  const [activeColumn, setActiveColumn] = useState(0);
+  const columnOrder = ['todo', 'inProgress', 'done'];
+
+  const handlePrev = () => {
+    setActiveColumn(
+      (prev) => (prev - 1 + columnOrder.length) % columnOrder.length,
+    );
+  };
+
+  const handleNext = () => {
+    setActiveColumn((prev) => (prev + 1) % columnOrder.length);
   };
 
   useEffect(() => {
@@ -214,52 +281,128 @@ export default function KanbanBoard({ isDarkMode, userId }) {
           collisionDetection={closestCenter}
           onDragEnd={onDragEnd}
         >
-          <div className={styles.board}>
-            <SortableContext
-              items={columns.todo}
-              strategy={verticalListSortingStrategy}
-            >
-              <KanbanColumn
-                id="todo"
-                title="A fazer"
+          {isMobile ? (
+            <>
+              <div className={styles.mobileHeader}>
+                {columnOrder[activeColumn] === 'todo' && (
+                  <div className={styles.todoTitleMobile}>
+                    <h2 className={styles.mobileTitle}>A fazer</h2>
+                    <button
+                      className={styles.addButton}
+                      onClick={handleAddClick}
+                    >
+                      <img
+                        src="/assets/[Botão] Adicionar task.svg"
+                        alt="Adicionar tarefa"
+                      />
+                    </button>
+                    {formOpen && (
+                      <TaskForm
+                        onSubmit={handleSubmit}
+                        onCancel={handleCancel}
+                        userId={userId}
+                      />
+                    )}
+                  </div>
+                )}
+                {columnOrder[activeColumn] === 'inProgress' && (
+                  <h2 className={styles.mobileTitle}>Em andamento</h2>
+                )}
+                {columnOrder[activeColumn] === 'done' && (
+                  <h2 className={styles.mobileTitle}>Feito</h2>
+                )}
+              </div>
+              <div className={styles.carouselContent}>
+                <div className={styles.carouselRow}>
+                  <button className={styles.arrowBtn} onClick={handlePrev}>
+                    <img
+                      src="/assets/navigate_before light.svg"
+                      alt="Anterior"
+                    />
+                  </button>
+                  <div className={styles.carouselContainer}>
+                    <KanbanColumn
+                      id={columnOrder[activeColumn]}
+                      title={
+                        columnOrder[activeColumn] === 'todo'
+                          ? 'A fazer'
+                          : columnOrder[activeColumn] === 'inProgress'
+                            ? 'Em andamento'
+                            : 'Feito'
+                      }
+                      items={columns[columnOrder[activeColumn]]}
+                      tasksInfo={tasksInfo}
+                      onDelete={handleDelete}
+                      onMoveNext={handleMoveNext}
+                      onMovePrevious={handleMovePrevious}
+                      isDarkMode={isDarkMode}
+                      onMoveToFirst={handleMoveToFirst}
+                    />
+                  </div>
+                  <button className={styles.arrowBtn} onClick={handleNext}>
+                    <img src="/assets/navigate_next light.svg" alt="Próximo" />
+                  </button>
+                </div>
+                <div className={styles.indicators}>
+                  {columnOrder.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`${styles.dot} ${activeColumn === idx ? styles.active : ''}`}
+                      onClick={() => setActiveColumn(idx)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className={styles.board}>
+              <SortableContext
                 items={columns.todo}
-                tasksInfo={tasksInfo}
-                onDelete={handleDelete}
-                onMoveNext={handleMoveNext}
-                isDarkMode={isDarkMode}
-              />
-            </SortableContext>
-            <SortableContext
-              items={columns.inProgress}
-              strategy={verticalListSortingStrategy}
-            >
-              <KanbanColumn
-                id="inProgress"
-                title="Em andamento"
+                strategy={verticalListSortingStrategy}
+              >
+                <KanbanColumn
+                  id="todo"
+                  title="A fazer"
+                  items={columns.todo}
+                  tasksInfo={tasksInfo}
+                  onDelete={handleDelete}
+                  onMoveNext={handleMoveNext}
+                  isDarkMode={isDarkMode}
+                />
+              </SortableContext>
+              <SortableContext
                 items={columns.inProgress}
-                tasksInfo={tasksInfo}
-                onDelete={handleDelete}
-                onMoveNext={handleMoveNext}
-                onMovePrevious={handleMovePrevious}
-                isDarkMode={isDarkMode}
-              />
-            </SortableContext>
-            <SortableContext
-              items={columns.done}
-              strategy={verticalListSortingStrategy}
-            >
-              <KanbanColumn
-                id="done"
-                title="Feito"
+                strategy={verticalListSortingStrategy}
+              >
+                <KanbanColumn
+                  id="inProgress"
+                  title="Em andamento"
+                  items={columns.inProgress}
+                  tasksInfo={tasksInfo}
+                  onDelete={handleDelete}
+                  onMoveNext={handleMoveNext}
+                  onMovePrevious={handleMovePrevious}
+                  isDarkMode={isDarkMode}
+                />
+              </SortableContext>
+              <SortableContext
                 items={columns.done}
-                tasksInfo={tasksInfo}
-                onDelete={handleDelete}
-                onMoveNext={handleMoveNext}
-                onMovePrevious={handleMovePrevious}
-                isDarkMode={isDarkMode}
-              />
-            </SortableContext>
-          </div>
+                strategy={verticalListSortingStrategy}
+              >
+                <KanbanColumn
+                  id="done"
+                  title="Feito"
+                  items={columns.done}
+                  tasksInfo={tasksInfo}
+                  onDelete={handleDelete}
+                  onMoveNext={handleMoveNext}
+                  onMovePrevious={handleMovePrevious}
+                  isDarkMode={isDarkMode}
+                  onMoveToFirst={handleMoveToFirst}
+                />
+              </SortableContext>
+            </div>
+          )}
         </DndContext>
       </div>
     </div>

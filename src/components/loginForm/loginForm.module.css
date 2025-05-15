@@ -146,7 +146,7 @@
   color: #64a2ff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .form {
     flex: 1 1 100%;
     display: flex;

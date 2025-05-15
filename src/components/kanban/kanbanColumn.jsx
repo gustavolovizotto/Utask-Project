@@ -11,6 +11,7 @@ export default function KanbanColumn({
   onMoveNext,
   onMovePrevious,
   isDarkMode,
+  onMoveToFirst,
 }) {
   const { setNodeRef, isOver } = useDroppable({ id });
 
@@ -27,6 +28,7 @@ export default function KanbanColumn({
           onMoveNext={onMoveNext}
           onMovePrevious={onMovePrevious}
           isDarkMode={isDarkMode}
+          onMoveToFirst={onMoveToFirst}
         />
       ))}
     </div>

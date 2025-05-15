@@ -165,7 +165,7 @@ form h1 {
   border-color: #ff6b6b;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .signup_btn {
     width: 100%;
   }

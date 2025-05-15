@@ -9,6 +9,7 @@ export default function KanbanCard({
   onMoveNext,
   onMovePrevious,
   isDarkMode,
+  onMoveToFirst,
 }) {
   const [openDesc, setOpenDesc] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,23 +71,70 @@ export default function KanbanCard({
         </p>
       )}
 
-      <div className={`${styles.actions} ${isDarkMode ? styles.dark : ''}`}>
-        <img
-          onClick={() => onMovePrevious(task.id)}
-          src={
-            isDarkMode
-              ? '/assets/[Botão] Voltar (1) dark.svg'
-              : '/assets/[Botão] Voltar.svg'
-          }
-        />
-        <img
-          onClick={() => onMoveNext(task.id)}
-          src={
-            isDarkMode
-              ? '/assets/[Botão] Próximo (1) dark.svg'
-              : '/assets/[Botão] Próximo.svg'
-          }
-        />
+      <div
+        className={`
+    ${styles.actions}
+    ${isDarkMode ? styles.dark : ''}
+    ${task.column === 'todo' ? styles.todoActions : ''}
+  `}
+      >
+        {task.column === 'todo' && (
+          <img
+            onClick={() => onMoveNext(task.id)}
+            src={
+              isDarkMode
+                ? '/assets/[Botão] Próximo (1) dark.svg'
+                : '/assets/[Botão] Próximo.svg'
+            }
+            alt="Próximo"
+          />
+        )}
+
+        {task.column === 'inProgress' && (
+          <>
+            <img
+              onClick={() => onMovePrevious(task.id)}
+              src={
+                isDarkMode
+                  ? '/assets/[Botão] Voltar (1) dark.svg'
+                  : '/assets/[Botão] Voltar.svg'
+              }
+              alt="Voltar"
+            />
+            <img
+              onClick={() => onMoveNext(task.id)}
+              src={
+                isDarkMode
+                  ? '/assets/[Botão] Próximo (1) dark.svg'
+                  : '/assets/[Botão] Próximo.svg'
+              }
+              alt="Próximo"
+            />
+          </>
+        )}
+
+        {task.column === 'done' && (
+          <>
+            <img
+              onClick={() => onMovePrevious(task.id)}
+              src={
+                isDarkMode
+                  ? '/assets/[Botão] Voltar (1) dark.svg'
+                  : '/assets/[Botão] Voltar.svg'
+              }
+              alt="Voltar"
+            />
+            <img
+              onClick={() => onMoveToFirst(task.id)}
+              src={
+                isDarkMode
+                  ? '/assets/[Botão] retornar prmeiro dark.svg'
+                  : '/assets/[Botão] retornar primeiro light.svg'
+              }
+              alt="Retornar para a primeira coluna"
+            />
+          </>
+        )}
       </div>
     </div>
   );
