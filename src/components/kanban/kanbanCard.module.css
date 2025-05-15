@@ -43,13 +43,9 @@
   position: absolute;
   top: 4vh;
   right: 1vw;
-  background: transparent;
+  background: none;
   border: none;
   z-index: 1;
-}
-
-.del {
-  cursor: pointer;
 }
 
 .delbtn {
@@ -57,11 +53,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 0.25vw;
+
   cursor: pointer;
 
-  width: 5.2vw;
-  height: 4.9375vh;
+  width: 4.2vw;
+  height: 3.9375vh;
   flex-shrink: 0;
 
   margin-right: 1.5vw;
@@ -75,6 +71,7 @@
 }
 .delbtn svg {
   fill: #df0000;
+  width: 1.5vw;
 }
 
 .delbtn p {
@@ -84,6 +81,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-right: 0.5vw;
 }
 
 .menu.dark .delbtn {
@@ -177,7 +175,6 @@
 }
 
 .menu.dark {
-  background-color: #444;
   color: white;
 }
 
@@ -211,5 +208,39 @@
     justify-content: flex-end;
     margin-left: auto;
     margin-right: -0.6vw;
+  }
+  .delbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25vw;
+    cursor: pointer;
+
+    width: 18vw;
+    height: 4.9375vh;
+    flex-shrink: 0;
+
+    margin-right: 11vw;
+    margin-top: -1.75vh;
+
+    border-radius: 0.25vw;
+    border: none;
+    background: none;
+    background: #fff;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .delbtn p {
+    color: #df0000;
+    font-family: Poppins;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 0.5vw;
+  }
+
+  .delbtn svg {
+    width: 4.5vw;
   }
 }

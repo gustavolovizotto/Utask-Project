@@ -22,18 +22,20 @@ export default function TaskForm({ onSubmit, onCancel, userId }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <img
-          src="/assets/[Botão] Fechar.svg"
-          alt="Fechar"
-          onClick={onCancel}
-          className={styles.closeButton}
-        />
         <form className={styles.form} onSubmit={handleSubmit}>
-          <img
-            src="/assets/Título form kanvan.svg"
-            alt="Título"
-            className={styles.title}
-          />
+          <div className={styles.header}>
+            <img
+              src="/assets/Título form kanvan.svg"
+              alt="Título"
+              className={styles.title}
+            />
+            <img
+              src="/assets/[Botão] Fechar.svg"
+              alt="Fechar"
+              onClick={onCancel}
+              className={styles.closeButton}
+            />
+          </div>
           <label>
             Título *
             <input
