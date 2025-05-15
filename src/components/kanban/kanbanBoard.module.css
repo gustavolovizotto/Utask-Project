@@ -156,6 +156,10 @@
   gap: 30vw;
 }
 
+.dark .mobileTitle {
+  color: #fafafa;
+}
+
 @media (max-width: 900px) {
   .tableTitles {
     display: none;
