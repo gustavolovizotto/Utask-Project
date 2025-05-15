@@ -33,17 +33,10 @@
   ],
   "tasks": [
     {
-      "id": "dfed",
-      "title": "dadadadadadada",
-      "description": "",
-      "column": "todo",
-      "usuarioId": null
-    },
-    {
       "id": "b1b0",
       "title": "GLOVIZOTTO",
       "description": "",
-      "column": "inProgress",
+      "column": "done",
       "usuarioId": "c689"
     },
     {
@@ -52,6 +45,41 @@
       "description": "",
       "column": "inProgress",
       "usuarioId": "f730"
+    },
+    {
+      "id": "7172",
+      "title": "dadad",
+      "description": "dadaa",
+      "column": "todo",
+      "usuarioId": "c689"
+    },
+    {
+      "id": "8b70",
+      "title": "kgkg",
+      "description": "kgkg",
+      "column": "inProgress",
+      "usuarioId": "c689"
+    },
+    {
+      "id": "3ac9",
+      "title": "dadad",
+      "description": "adada",
+      "column": "done",
+      "usuarioId": "c689"
+    },
+    {
+      "id": "8c6e",
+      "title": "dadad",
+      "description": "daadad",
+      "column": "inProgress",
+      "usuarioId": "c689"
+    },
+    {
+      "id": "2000",
+      "title": "dada",
+      "description": "dada",
+      "column": "inProgress",
+      "usuarioId": "c689"
     }
   ]
 }
