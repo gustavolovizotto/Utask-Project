@@ -7,6 +7,14 @@ const AdviceGenerator = ({ isDarkMode }) => {
   const [translatedAdvice, setTranslatedAdvice] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 900);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const fetchAndTranslateAdvice = async () => {
     try {
@@ -42,7 +50,11 @@ const AdviceGenerator = ({ isDarkMode }) => {
 
   return (
     <div className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}>
-      <div className={`${styles.card} ${isDarkMode ? styles.dark : ''}`}>
+      <div
+        className={`${styles.card} ${isDarkMode ? styles.dark : ''}`}
+        onClick={isMobile ? () => setShowModal(true) : undefined}
+        style={isMobile ? { cursor: 'pointer' } : {}}
+      >
         <img
           src={
             isDarkMode
@@ -76,6 +88,42 @@ const AdviceGenerator = ({ isDarkMode }) => {
           </p>
         )}
       </div>
+      {isMobile && showModal && (
+        <div
+          className={styles.adviceModalOverlay}
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className={styles.adviceModal}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={styles.modalHeader}>
+              <img
+                src={
+                  isDarkMode
+                    ? '/assets/Ícone lampada dark.svg'
+                    : '/assets/Ícone lampada mensagem.svg'
+                }
+                alt="Fechar"
+                onClick={() => setShowModal(false)}
+                className={styles.logoModal}
+              />
+              <h2>Frase do Dia</h2>
+              <img
+                src={
+                  isDarkMode
+                    ? '/public/assets/[Botão] Fechar.svg'
+                    : '/public/assets/[Botão] Fechar.svg'
+                }
+                alt="Fechar"
+                onClick={() => setShowModal(false)}
+                className={styles.closeButton}
+              />
+            </div>
+            <p>"{translatedAdvice}"</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

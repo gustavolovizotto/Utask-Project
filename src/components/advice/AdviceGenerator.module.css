@@ -61,7 +61,7 @@
 
 @media (max-width: 900px) {
   .container {
-    display: flex; /* Adicione esta linha */
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -106,5 +106,98 @@
     margin-left: 8vw;
     margin-right: 6vw;
     margin-bottom: 1vh;
+  }
+
+  .adviceModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .adviceModal {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    width: 75vw;
+    height: 30vh;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .dark .adviceModal {
+    background: #3d3d3d;
+  }
+
+  .adviceModal h2 {
+    margin-bottom: 1rem;
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.01275rem;
+  }
+
+  .adviceModal p {
+    color: #141414;
+    font-family: Poppins;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    align-self: start;
+    margin-top: 4vh;
+  }
+
+  .dark .adviceModal p {
+    color: #fafafa;
+  }
+
+  .dark .adviceModal h2 {
+    color: #fafafa;
+  }
+
+  .adviceModal button {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    background: #226ed8;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .modalHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .modalHeader h2 {
+    flex: 1;
+    margin: 0;
+    margin-left: -20vw;
+    font-size: 1rem;
+  }
+  .closeButton {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .logoModal {
+    margin-left: 2vw;
+    width: 3rem;
+    height: 3rem;
   }
 }
