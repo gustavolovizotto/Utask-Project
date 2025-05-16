@@ -4,10 +4,16 @@ import { useState } from 'react';
 import { FirstHeader } from '../components/header/FirstHeader';
 
 export function SignUp() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const stored = localStorage.getItem('darkMode');
+    return stored ? JSON.parse(stored) : false;
+  });
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prev) => {
+      localStorage.setItem('darkMode', JSON.stringify(!prev));
+      return !prev;
+    });
   };
 
   return (

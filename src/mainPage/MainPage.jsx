@@ -8,10 +8,16 @@ import { useAuth } from '../auth/AuthContext';
 import { Navigate } from 'react-router-dom';
 
 export function MainPage() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const stored = localStorage.getItem('darkMode');
+    return stored ? JSON.parse(stored) : false;
+  });
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prev) => {
+      localStorage.setItem('darkMode', JSON.stringify(!prev));
+      return !prev;
+    });
   };
 
   const { user } = useAuth();
