@@ -6,11 +6,10 @@ body {
 
 .container {
   width: 100%;
-  height: 3.125vw;
+  height: 100%;
   display: flex;
   flex-shrink: 0;
   background: var(--color-primary, #114fa7);
-  display: flex;
   gap: 30vw;
 }
 
@@ -37,4 +36,40 @@ footer a {
 .container.dark {
   background: #111;
   color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    background: var(--color-primary, #114fa7);
+    gap: 0rem;
+  }
+
+  footer p {
+    color: #fff;
+    font-family: Poppins;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  footer a {
+    color: #fff;
+    font-family: Poppins;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+  }
+
+  .container.dark {
+    background: #111;
+    color: #ffffff;
+  }
 }

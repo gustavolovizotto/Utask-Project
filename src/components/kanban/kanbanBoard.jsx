@@ -265,6 +265,7 @@ export default function KanbanBoard({ isDarkMode, userId }) {
                 onSubmit={handleSubmit}
                 onCancel={handleCancel}
                 userId={userId}
+                isDarkMode={isDarkMode}
               />
             )}
           </div>
@@ -301,6 +302,7 @@ export default function KanbanBoard({ isDarkMode, userId }) {
                         onSubmit={handleSubmit}
                         onCancel={handleCancel}
                         userId={userId}
+                        isDarkMode={isDarkMode}
                       />
                     )}
                   </div>
