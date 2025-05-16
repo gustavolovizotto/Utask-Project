@@ -112,8 +112,8 @@ const AdviceGenerator = ({ isDarkMode }) => {
               <img
                 src={
                   isDarkMode
-                    ? '/public/assets/[Botão] Fechar.svg'
-                    : '/public/assets/[Botão] Fechar.svg'
+                    ? '/assets/[Botão] Fechar.svg'
+                    : '/assets/[Botão] Fechar.svg'
                 }
                 alt="Fechar"
                 onClick={() => setShowModal(false)}

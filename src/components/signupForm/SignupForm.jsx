@@ -52,7 +52,6 @@ export function SignUpForm({ isDarkMode }) {
         senha: formData.senha,
       });
 
-      // Mostra o popup de sucesso
       toast.success(
         <div className={styles.toastContent}>
           <h3 className={styles.toastTitle}>Cadastro realizado com sucesso!</h3>
@@ -72,7 +71,6 @@ export function SignUpForm({ isDarkMode }) {
         },
       );
 
-      // Redireciona após 3 segundos
       setTimeout(() => {
         navigate('/MainPage');
       }, 3000);
