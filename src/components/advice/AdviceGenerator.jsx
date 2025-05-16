@@ -104,7 +104,7 @@ const AdviceGenerator = ({ isDarkMode }) => {
                     ? '/assets/Ícone lampada dark.svg'
                     : '/assets/Ícone lampada mensagem.svg'
                 }
-                alt="Fechar"
+                alt="Icone de lâmpada"
                 onClick={() => setShowModal(false)}
                 className={styles.logoModal}
               />

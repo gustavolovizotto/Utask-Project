@@ -34,7 +34,7 @@ export default function TaskForm({ onSubmit, onCancel, userId, isDarkMode }) {
             />
             <img
               src="/assets/[Botão] Fechar.svg"
-              alt="Fechar"
+              alt="Botão de Fechar"
               onClick={onCancel}
               className={styles.closeButton}
             />

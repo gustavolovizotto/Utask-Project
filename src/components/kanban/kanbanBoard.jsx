@@ -319,7 +319,7 @@ export default function KanbanBoard({ isDarkMode, userId }) {
                   <button className={styles.arrowBtn} onClick={handlePrev}>
                     <img
                       src="/assets/navigate_before light.svg"
-                      alt="Anterior"
+                      alt="Seta Anterior"
                     />
                   </button>
                   <div className={styles.carouselContainer}>
@@ -342,7 +342,10 @@ export default function KanbanBoard({ isDarkMode, userId }) {
                     />
                   </div>
                   <button className={styles.arrowBtn} onClick={handleNext}>
-                    <img src="/assets/navigate_next light.svg" alt="Próximo" />
+                    <img
+                      src="/assets/navigate_next light.svg"
+                      alt="Seta Próximo"
+                    />
                   </button>
                 </div>
                 <div className={styles.indicators}>

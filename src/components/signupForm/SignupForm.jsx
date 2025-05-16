@@ -91,7 +91,7 @@ export function SignUpForm({ isDarkMode }) {
         <span className={styles.logo}>uTask 3.0</span>
         <img
           src="/assets/Divisor 2 login.svg"
-          alt="Divisor"
+          alt="Divisória"
           className={styles.divisor2}
         />
 

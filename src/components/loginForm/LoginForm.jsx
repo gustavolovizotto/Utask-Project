@@ -115,7 +115,7 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
                   ? '/assets/visibility_FILL-icon.svg'
                   : '/assets/visibility_FILL0-icon.svg'
               }
-              alt="Toggle senha"
+              alt="Ocultar senha"
             />
           </button>
 
@@ -131,7 +131,7 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
         <img
           className={styles.divisor2}
           src="/assets/Divisor 2 login.svg"
-          alt="Divisor"
+          alt="Divisória"
         />
 
         <Link to="/signup" className={styles.crie_conta}>

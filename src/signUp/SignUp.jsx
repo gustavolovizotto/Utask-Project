@@ -32,7 +32,7 @@ export function SignUp() {
           <img
             className={styles.logo2}
             src="/assets/Ilustração cadastro.svg"
-            alt="Logo"
+            alt="Logo Unect"
           />
         </div>
       </div>

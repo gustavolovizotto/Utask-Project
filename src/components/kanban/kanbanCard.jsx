@@ -85,7 +85,7 @@ export default function KanbanCard({
                 ? '/assets/[Botão] Próximo (1) dark.svg'
                 : '/assets/[Botão] Próximo.svg'
             }
-            alt="Próximo"
+            alt="Botão Próximo"
           />
         )}
 
@@ -98,7 +98,7 @@ export default function KanbanCard({
                   ? '/assets/[Botão] Voltar (1) dark.svg'
                   : '/assets/[Botão] Voltar.svg'
               }
-              alt="Voltar"
+              alt="Botão Voltar"
             />
             <img
               onClick={() => onMoveNext(task.id)}
@@ -121,7 +121,7 @@ export default function KanbanCard({
                   ? '/assets/[Botão] Voltar (1) dark.svg'
                   : '/assets/[Botão] Voltar.svg'
               }
-              alt="Voltar"
+              alt="Botão de Voltar"
             />
             <img
               onClick={() => onMoveToFirst(task.id)}
