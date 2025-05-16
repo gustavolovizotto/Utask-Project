@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from './TaskForm.module.css';
+import styles from './taskForm.module.css';
 
-export default function TaskForm({ onSubmit, onCancel, userId }) {
+export default function TaskForm({ onSubmit, onCancel, userId, isDarkMode }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [column, setColumn] = useState('todo');
@@ -21,8 +21,11 @@ export default function TaskForm({ onSubmit, onCancel, userId }) {
 
   return (
     <div className={styles.overlay}>
-      <div className={styles.modal}>
-        <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={`${styles.modal} ${isDarkMode ? styles.dark : ''}`}>
+        <form
+          className={`${styles.form} ${isDarkMode ? styles.dark : ''}`}
+          onSubmit={handleSubmit}
+        >
           <div className={styles.header}>
             <img
               src="/assets/Título form kanvan.svg"

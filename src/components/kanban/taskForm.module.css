@@ -16,7 +16,7 @@
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  width: 90%;
+  width: 30vw;
   max-width: 400px;
 }
 
@@ -42,13 +42,35 @@
 .form input,
 .form textarea,
 .form select {
-  width: 23.375rem;
+  width: 30vw;
   height: 2.5rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
   background: #eee;
   border: none;
   margin-bottom: 1vh;
+  margin-top: 1vh;
+}
+
+.form.dark input,
+.form.dark textarea,
+.form.dark select {
+  background: #3d3d3d !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.form.dark label {
+  color: #fff !important;
+}
+
+.modal.dark {
+  background: #333 !important;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 30vw;
+  max-width: 100%;
 }
 
 .buttons {
@@ -69,7 +91,7 @@
   border: none;
 
   display: flex;
-  width: 23.375rem;
+  width: 30vw;
   padding: 0.625rem 0rem;
   justify-content: center;
   align-items: center;
@@ -150,6 +172,27 @@
     background: #eee;
     border: none;
     margin-bottom: 1vh;
+  }
+
+  .form.dark input,
+  .form.dark textarea,
+  .form.dark select {
+    background: #3d3d3d !important;
+    color: #fff !important;
+    border: none !important;
+  }
+
+  .form.dark label {
+    color: #fff !important;
+  }
+
+  .modal.dark {
+    background: #333 !important;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 75vw;
+    max-width: 100%;
   }
 
   .buttons {
