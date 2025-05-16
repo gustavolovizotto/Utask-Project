@@ -20,7 +20,6 @@ const handleError = (error) => {
 
 export const cadastrarUsuario = async (usuario) => {
   try {
-    // Verifica se o email já existe
     const { data } = await api.get('/usuarios', {
       params: { email: usuario.email },
     });
@@ -29,10 +28,9 @@ export const cadastrarUsuario = async (usuario) => {
       throw new Error('Email já cadastrado');
     }
 
-    // Cria novo usuário com ID sequencial
     const newUser = {
       ...usuario,
-      id: Date.now().toString(), // Gera um ID único
+      id: Date.now().toString(),
     };
 
     const response = await api.post('/usuarios', newUser);
@@ -61,7 +59,6 @@ export const loginUsuario = async (credenciais) => {
   }
 };
 
-// Funções para tasks
 export const criarTask = async (task) => {
   try {
     const newTask = {

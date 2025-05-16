@@ -20,7 +20,6 @@ export function Footer({ isDarkMode }) {
     <footer>
       <div className={`${styles.container} ${isDarkMode ? styles.dark : ''}`}>
         {isMobile ? (
-          // Estrutura mobile
           <div className={styles.mobileFooter}>
             <p>
               © Processo de Trainee{' '}

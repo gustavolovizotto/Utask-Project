@@ -1,9 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 
-// 1. Crie o contexto
 export const AuthContext = createContext();
 
-// 2. Crie um hook personalizado para usar o contexto
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -12,7 +10,6 @@ export const useAuth = () => {
   return context;
 };
 
-// 3. Crie o provedor
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');

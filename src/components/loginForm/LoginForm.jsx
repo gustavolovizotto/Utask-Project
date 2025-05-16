@@ -13,7 +13,7 @@ export function LoginForm({ isDarkMode, setIsAuthenticated }) {
     senha: '',
   });
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth(); // Use o contexto
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const toggleSenha = () => {
